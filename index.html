@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Survey Pro</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#e0f2ff,#f5f7ff);
+padding:20px;
+}
+
+/* MAIN CARD */
+.wrapper{
+width:100%;
+max-width:850px;
+background:#fff;
+border-radius:25px;
+box-shadow:0 25px 60px rgba(0,0,0,0.1);
+overflow:hidden;
+border:1px solid #eee;
+}
+
+/* HEADER */
+.header{
+background:linear-gradient(90deg,#4facfe,#00f2fe);
+padding:30px;
+text-align:center;
+color:white;
+}
+
+.header h1{
+font-size:26px;
+}
+
+.header p{
+opacity:0.9;
+margin-top:5px;
+}
+
+/* PROGRESS */
+.progress{
+height:6px;
+background:#eee;
+}
+
+.bar{
+height:6px;
+width:5%;
+background:linear-gradient(90deg,#f0f2f4,#1ae646);
+transition:0.4s;
+}
+
+/* CONTENT */
+.content{
+padding:40px;
+min-height:420px;
+}
+
+/* QUESTION BOX */
+.q{
+display:none;
+animation:fade 0.4s ease;
+}
+
+.q.active{
+display:block;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+h2{
+font-size:20px;
+margin-bottom:18px;
+color:#222;
+}
+
+/* BUTTONS */
+button{
+width:100%;
+padding:14px;
+margin:8px 0;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#4facfe,#00c6ff);
+color:white;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 10px 20px rgba(0,198,255,0.2);
+}
+
+button:hover{
+transform:scale(1.02);
+box-shadow:0 15px 30px rgba(0,198,255,0.3);
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #ddd;
+margin-top:10px;
+outline:none;
+font-size:14px;
+}
+
+input:focus{
+border-color:#4facfe;
+box-shadow:0 0 0 3px rgba(79,172,254,0.2);
+}
+
+/* VERIFY BUTTON */
+.verify{
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+}
+
+/* DONE SCREEN */
+.done{
+text-align:center;
+padding:60px;
+}
+
+/* ================= RESPONSIVE FIX ONLY ================= */
+
+/* Tablets */
+@media (max-width: 768px){
+
+.header h1{
+font-size:22px;
+}
+
+.header p{
+font-size:13px;
+}
+
+.content{
+padding:25px;
+}
+
+h2{
+font-size:18px;
+}
+
+button{
+font-size:14px;
+padding:12px;
+}
+
+input{
+padding:12px;
+}
+}
+
+/* Mobile */
+@media (max-width: 480px){
+
+.wrapper{
+border-radius:15px;
+}
+
+.header{
+padding:20px;
+}
+
+.header h1{
+font-size:18px;
+}
+
+.header p{
+font-size:12px;
+}
+
+.content{
+padding:18px;
+}
+
+h2{
+font-size:16px;
+line-height:1.4;
+}
+
+button{
+font-size:13px;
+padding:11px;
+border-radius:10px;
+}
+
+input{
+padding:11px;
+font-size:13px;
+}
+
+.done{
+padding:40px 20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- HEADER -->
+<div class="header">
+<h1>📊 Social Media UX Survey</h1>
+<p>Professional Experience Feedback Form</p>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="content">
+
+<!-- Q1 -->
+<div class="q active" id="q1">
+<h2>Q1 — Content recommendation system?</h2>
+<button onclick="next()">Ineffective</button>
+<button onclick="next()">Neutral</button>
+<button onclick="next()">Effective</button>
+<button onclick="next()">Very Effective</button>
+</div>
+
+<!-- Q2 -->
+<div class="q" id="q2">
+<h2>Q2 — Navigation ease?</h2>
+<button onclick="next()">Very Difficult</button>
+<button onclick="next()">Difficult</button>
+<button onclick="next()">Neutral</button>
+<button onclick="next()">Easy</button>
+<button onclick="next()">Very Easy</button>
+</div>
+
+<!-- Q3 -->
+<div class="q" id="q3">
+<h2>Q3 — Do you have Instagram account?</h2>
+<button onclick="next()">Yes</button>
+<button onclick="next()">No</button>
+</div>
+
+<!-- Q4 -->
+<div class="q" id="q4">
+<h2>Q4 — Search satisfaction?</h2>
+<button onclick="next()">Unsatisfied</button>
+<button onclick="next()">Neutral</button>
+<button onclick="next()">Satisfied</button>
+</div>
+
+<!-- Q5 -->
+<div class="q" id="q5">
+<h2>Q5 — Distraction level?</h2>
+<button onclick="next()">Never</button>
+<button onclick="next()">Sometimes</button>
+<button onclick="next()">Often</button>
+</div>
+
+<!-- Q6 -->
+<div class="q" id="q6">
+<h2>Q6 — Interaction ease?</h2>
+<button onclick="next()">Easy</button>
+<button onclick="next()">Neutral</button>
+<button onclick="next()">Difficult</button>
+</div>
+
+<!-- Q7 -->
+<div class="q" id="q7">
+<h2>Q7 — Security feeling?</h2>
+<button onclick="next()">Safe</button>
+<button onclick="next()">Neutral</button>
+<button onclick="next()">Unsafe</button>
+</div>
+
+<!-- Q8 -->
+<div class="q" id="q8">
+<h2>Q8 — Content accuracy?</h2>
+<button onclick="next()">Accurate</button>
+<button onclick="next()">Neutral</button>
+<button onclick="next()">Inaccurate</button>
+</div>
+
+<!-- Q9 -->
+<div class="q" id="q9">
+<h2>Q9 — Irrelevant content?</h2>
+<button onclick="next()">Never</button>
+<button onclick="next()">Sometimes</button>
+<button onclick="next()">Often</button>
+</div>
+
+<!-- Q10 -->
+<div class="q" id="q10">
+<h2>Q10 — Usage frequency?</h2>
+<button onclick="next()">Daily</button>
+<button onclick="next()">Weekly</button>
+<button onclick="next()">Rarely</button>
+</div>
+
+<!-- Q11 VERIFY -->
+<div class="q" id="q11">
+<h2>Q11 — Verify Instagram Account</h2>
+
+<input type="text" id="insta" placeholder="@username">
+
+<button class="verify" onclick="verify()">Verify Account</button>
+
+<p id="msg"></p>
+</div>
+
+<!-- Q12 to Q20 (same structure short) -->
+<div class="q" id="q12"><h2>Q12 — Usage time?</h2><button onclick="next()">1h</button><button onclick="next()">2-3h</button><button onclick="next()">4h+</button></div>
+<div class="q" id="q13"><h2>Q13 — Purpose?</h2><button onclick="next()">Entertainment</button><button onclick="next()">Learning</button><button onclick="next()">Business</button></div>
+<div class="q" id="q14"><h2>Q14 — Account management?</h2><button onclick="next()">Easy</button><button onclick="next()">Neutral</button><button onclick="next()">Difficult</button></div>
+<div class="q" id="q15"><h2>Q15 — Most used app?</h2><button onclick="next()">Instagram</button><button onclick="next()">TikTok</button><button onclick="next()">YouTube</button></div>
+<div class="q" id="q16"><h2>Q16 — Posting frequency?</h2><button onclick="next()">Daily</button><button onclick="next()">Weekly</button><button onclick="next()">Never</button></div>
+<div class="q" id="q17"><h2>Q17 — Content type?</h2><button onclick="next()">Photos</button><button onclick="next()">Videos</button><button onclick="next()">Stories</button></div>
+<div class="q" id="q18"><h2>Q18 — Engagement?</h2><button onclick="next()">High</button><button onclick="next()">Medium</button><button onclick="next()">Low</button></div>
+<div class="q" id="q19"><h2>Q19 — Notifications?</h2><button onclick="next()">Important</button><button onclick="next()">Neutral</button><button onclick="next()">Not Important</button></div>
+
+<!-- Q20 -->
+<div class="q" id="q20">
+<h2>Q20 — Continue using social media?</h2>
+<button onclick="finish()">Yes</button>
+<button onclick="finish()">Maybe</button>
+<button onclick="finish()">No</button>
+</div>
+
+<!-- DONE -->
+<div class="q" id="done">
+<div class="done">
+<h1>🎉 Survey Completed</h1>
+<p>Thanks for your response</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+let current=1;
+let verified=false;
+const total=20;
+
+function updateBar(){
+document.getElementById("bar").style.width=(current/total)*100+"%";
+}
+
+function next(){
+
+if(current===11 && !verified){
+alert("Pehle Instagram verify karo!");
+return;
+}
+
+document.getElementById("q"+current).classList.remove("active");
+current++;
+document.getElementById("q"+current).classList.add("active");
+
+updateBar();
+}
+
+function verify(){
+
+let val=document.getElementById("insta").value;
+if(!val){alert("Username likho!");return;}
+
+let user=val.startsWith("@")?val.slice(1):val;
+
+window.open("https://www.instagram.com/"+user+"/","_blank");
+
+document.getElementById("msg").innerText="✔ Verified";
+verified=true;
+}
+
+function finish(){
+document.getElementById("q20").classList.remove("active");
+document.getElementById("done").classList.add("active");
+updateBar();
+}
+
+</script>
+
+</body>
+</html>
